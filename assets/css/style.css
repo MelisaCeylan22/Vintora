@@ -4111,3 +4111,115 @@ to {
     outline: none;
     box-shadow: none;
 }
+/* =========================
+   GENEL / TEMEL
+========================= */
+.navbar { overflow: visible; }
+
+/* Kök dropdown (Ürünlerimiz) */
+.dropdown-root { position: relative; }
+
+/* 1. seviye menü (kök dropdown paneli) */
+.menu-root{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  min-width: 260px;
+  margin-top: 0;           /* link ile menü arasında boşluk olmasın */
+  padding: 8px;
+  background: #fff;
+  border: 0;
+  border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(0,0,0,.12);
+}
+
+/* JS açık tuttuğunda görünür */
+.dropdown-root.open > .menu-root { display: block !important; }
+
+/* 1. ve 2. seviye satırlar */
+.sub-link,
+.dropdown-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #111827;
+  text-decoration: none;
+}
+.sub-link:hover,
+.dropdown-item:hover{ background: #f3f4f6; }
+
+/* Oturma/Yatak Odası blokları (2. seviye başlıkları) */
+.dropdown-sub{ position: relative; }
+.sub-link{ font-weight: 600; }
+
+/* =========================
+   2. SEVİYE MENÜ (HER ZAMAN SOLA AÇILIR)
+========================= */
+.menu-sub{
+  position: absolute;
+  top: 0;
+    left:100%;     /* sola aç */
+  right: auto;        /* sağa açılmayı iptal */
+  z-index: 1001;
+  display: none;
+  min-width: 240px;
+  margin-left: 13.5rem; /* ana menü ile aralık */
+  padding: 8px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0,0,0,.10);
+  top: 0px !important;
+}
+
+/* JS veya hover ile açıkken */
+.dropdown-sub.open > .menu-sub { display: block !important; }
+
+/* =========================
+   CHEVRON (SVG ok)
+========================= */
+.sub-link .chev,
+.dropdown-item .chev{
+  width: 14px;
+  height: 14px;
+  stroke: #6b7280;
+  flex-shrink: 0;
+  transition: transform .2s ease, stroke .2s ease;
+}
+.sub-link:hover .chev,
+.dropdown-item:hover .chev{ stroke: #0d6efd; }
+
+/* Alt menü açıkken oku sola döndür (sola açıldığımız için -90° mantıklı) */
+.dropdown-sub.open > .sub-link .chev{ transform: rotate(-90deg); }
+
+/* =========================
+   DESKTOP HOVER DAVRANIŞI
+   (JS ile gecikmeli kapatma kullanıyorsan kalsın;
+    sadece CSS ile test etmek istersen bu da çalışır)
+========================= */
+@media (min-width: 992px){
+  .dropdown-root:hover > .menu-root{ display: block; }
+  .dropdown-sub:hover > .menu-sub{ display: block; }
+}
+
+/* =========================
+   MOBİL (LG ALTI) – TIKLA AÇ/KAPA
+   JS: .dropdown-root.show  ve .dropdown-sub.open sınıflarını toggle eder
+========================= */
+@media (max-width: 991.98px){
+  .menu-root,
+  .menu-sub{
+    position: static;
+    display: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
+  .dropdown-root.show > .menu-root{ display: block; }
+  .dropdown-sub.open > .menu-sub{ display: block; }
+}
+
