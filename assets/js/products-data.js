@@ -1,5 +1,5 @@
 const PRODUCTS = {
-  "NORA KOLTUK": {
+  "NORAKOLTUK": {
     title: "Nora Koltuk Takımı",
     price: "2.000 TL",
     image: "../assets/images/1koltak.jpg",
@@ -10,7 +10,7 @@ const PRODUCTS = {
     features: "Uzun ömürlü dayanıklı yapı ve sessiz bağlantı sistemi"
   },
 
-  "ARTEMİS KOLTUK": {
+  "ARTEMİSKOLTUK": {
     title: "Artemis Koltuk Takımı",
     price: "2.999 TL",
     image: "../assets/images/2koltak.png",
@@ -21,7 +21,7 @@ const PRODUCTS = {
     features: "Yumuşak oturum konforu ve ergonomik sırt desteği"
   },
 
-  "ALORA KOLTUK": {
+  "ALORAKOLTUK": {
     title: "Alora Koltuk Takımı",
     price: "8.999 TL",
     image: "../assets/images/3koltak.png",
@@ -33,10 +33,10 @@ const PRODUCTS = {
   },
 
   
-  "SIENA KOSE": {
+  "SIENAKOSE": {
     title: "Siena Köşe Takımı",
     price: "4.999 TL",
-    image: "../assets/images/1kosetak.png",
+    image: "../assets/images/1kostak.png",
     shortDesc: "Köşe takımı, modern tasarımı ve yüksek konforuyla yaşam alanınıza ferahlık ve şıklık kazandırır.",
     longDesc: "Bu köşe takımı, fonksiyonel yapısı ve zarif detaylarıyla oturma alanınızı en verimli şekilde kullanmanızı sağlar. Yumuşak minderleri, ergonomik sırt desteği ve geniş oturum alanı sayesinde hem günlük dinlenme hem de misafir ağırlama için ideal bir konfor sunar. Leke tutmayan kumaş dokusu ve sağlam iskelet yapısıyla uzun yıllar boyunca dayanıklılığını korur. Farklı renk ve modül seçenekleriyle her dekorasyona uyum sağlayan bu takım, evinizin atmosferine modern bir sıcaklık katar. Minimal tarzı ve estetik çizgileriyle salonunuzun odak noktası olacak şekilde tasarlanmıştır.",
     types: "Köşe Takımı",
@@ -44,10 +44,10 @@ const PRODUCTS = {
     features: "yumuşak sünger, nefes alan kumaş"
   },
 
-    "NUVIA KOSE": {
+    "NUVIAKOSE": {
     title: "Nuvia Köşe Takımı",
     price: "3.999 TL",
-    image: "../assets/images/2kosetak.png",
+    image: "../assets/images/2kostak.png",
     shortDesc: "Şık tasarımı ve yüksek konforuyla köşe takımı, evinizin en keyifli köşesini oluşturur.",
     longDesc: "Bu köşe takımı, modern çizgileriyle mekâna zarif bir görünüm kazandırırken, rahat oturum yapısıyla günün yorgunluğunu atmanız için ideal bir alan sunar. Geniş oturma kapasitesi sayesinde ailece vakit geçirmeye, film izlemeye veya misafir ağırlamaya uygundur. Kaliteli kumaş dokusu ve ergonomik yastıklarıyla uzun süreli kullanımlarda bile maksimum konfor sağlar. Farklı renk seçenekleri ve modüler yapısı, her salon düzenine kolayca uyum gösterir. Dayanıklı iskelet yapısı ve zarif detaylarıyla hem estetik hem de uzun ömürlü bir tercih arayanlar için mükemmel bir çözümdür.",
     types: "Köşe Takımı",
@@ -55,12 +55,12 @@ const PRODUCTS = {
     features: "Renk, kumaş ve ayak seçenekleriyle kişiselleştirilebilir"
   },
 
-  "OLIVA KOSE": {
+  "OLIVAKOSE": {
     title: "Oliva Köşe Takımı",
     price: "2.499 TL",
-    image: "../assets/images/3kosetak.png",
+    image: "../assets/images/3kostak.png",
     shortDesc: "Köşe takımı, zarif detayları ve konforlu yapısıyla yaşam alanınıza modern bir dokunuş katar.",
-    longDesc: "BBu köşe takımı, şıklığı ve işlevselliği bir araya getirerek evinizin en gözde alanını oluşturur. Geniş oturum alanı, yumuşak minderleri ve ergonomik sırt desteğiyle günün her anında rahatlık sunar. Leke tutmayan ve kolay temizlenebilir kumaşı sayesinde uzun yıllar ilk günkü görünümünü korur. Modüler yapısı sayesinde farklı alanlara kolayca uyum sağlar ve dilediğiniz şekilde konumlandırılabilir. Modern tasarım çizgileriyle hem minimalist hem de klasik dekorasyon tarzlarına uyum sağlayarak salonunuza sıcak bir atmosfer kazandırır.",
+    longDesc: "Bu köşe takımı, şıklığı ve işlevselliği bir araya getirerek evinizin en gözde alanını oluşturur. Geniş oturum alanı, yumuşak minderleri ve ergonomik sırt desteğiyle günün her anında rahatlık sunar. Leke tutmayan ve kolay temizlenebilir kumaşı sayesinde uzun yıllar ilk günkü görünümünü korur. Modüler yapısı sayesinde farklı alanlara kolayca uyum sağlar ve dilediğiniz şekilde konumlandırılabilir. Modern tasarım çizgileriyle hem minimalist hem de klasik dekorasyon tarzlarına uyum sağlayarak salonunuza sıcak bir atmosfer kazandırır.",
     types: "Köşe Takımı",
     materials: "Yüksek yoğunluklu HR sünger (çökme yapmaz)",
     features: "Yumuşak oturum konforu ve ergonomik sırt desteği"
