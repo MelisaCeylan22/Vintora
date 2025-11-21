@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log('[PD] matched data =', data ? data.title : null);
   if (!data) return;
 
-  // Seçiciler 
+  
   const allImages   = document.querySelectorAll('.product2-tab img.img-fluid');
   const titleEl     = document.querySelector('.types_content h4');
   const priceEl     = document.querySelector('.types_content .price');
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const descParas   = document.querySelectorAll('#description .description_content p');
   const infoTbody   = document.querySelector('#information table tbody');
 
-  // Doldurma
+  
   allImages.forEach(img => {
     img.src = data.image;
     img.alt = (data.title || 'Ürün') + ' görseli';
@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (infoTbody) {
     const rows = [
-      ['Types',     data.types     || '-'],
-      ['Materials', data.materials || '-'],
-      ['Features',  data.features  || '-'],
+      ['Tür',     data.types     || '-'],
+      ['Materyal', data.materials || '-'],
+      ['Özellikler',  data.features  || '-'],
     ];
     infoTbody.innerHTML = rows.map(([k,v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('');
   }
