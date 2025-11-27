@@ -4223,3 +4223,48 @@ to {
   .dropdown-sub.open > .menu-sub{ display: block; }
 }
 
+.founder-img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Sağdaki metin sabit genişlik */
+.founder-right {
+    max-width: 420px;
+    margin: auto;
+}
+
+/* Epik söz */
+.founder-quote {
+    font-size: 24px;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.5;
+    color: #222;
+}
+
+/* Kurucu adı */
+.founder-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+}
+
+/* kurucu badge */
+.founder-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #2c5858, #2c5858);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(255, 104, 0, 0.25);
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+
+
