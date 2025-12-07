@@ -325,7 +325,7 @@ p {font-size: 18px; line-height: 26px;}
 .offer-con .offer_content h2 {font-size: 62px; line-height: 68px;}
 .offer-con .offer_content p {font-size: 22px; line-height: 22px; margin-bottom: 30px;}
 .offer-con .offer_content .primary_btn {padding: 18px 35px;}
-.offer-con .offer_wrapper {display: none;}
+.offer-con .offer_wrapper {display: flex; min-height: 420px; margin-top: 30px;}
 .testimonial-con {padding: 80px 0 130px;}
 .testimonial-con .testimonial_content h6 {margin-bottom: 10px;}
 .testimonial-con .testimonial_content h2 {margin-bottom: 30px;}

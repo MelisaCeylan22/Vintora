@@ -19,7 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/images/favicon/manifest.json">
+    <script>if(location.protocol!=='file:'){document.write('<link rel="manifest" href="./assets/images/favicon/manifest.json">');}</script>
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -48,7 +48,7 @@
         </div>
         <div class="login-form-box">
             <div class="login-card">
-                <form>
+                <form id="login-form" autocomplete="off">
                     <div class="form-group">
                         <label for="exampleInputEmail1">E-posta adresinizi girin</label>
                         <input class="input-field form_style" type="email" id="exampleInputEmail1" required>
@@ -56,11 +56,12 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Şifrenizi girin</label>
                         <input  class="input-field form_style" type="password" id="exampleInputPassword1" required>
+                        <small class="text-muted d-block mt-1">Demo: admin@admin.com / admin</small>
                     </div>
                     <button type="submit" class="btn btn-primary hover-effect">Giriş Yap</button>
                     <div>
                         <label class="font-weight-normal mb-0" style="cursor: pointer;">
-                        <input class="checkbox" type="checkbox" name="userRememberMe" required>
+                        <input class="checkbox" type="checkbox" name="userRememberMe">
                         Beni Hatırla
                         </label>
                         <a href="#" class="forgot-password float-right">Şifremi Unuttum</a>
@@ -73,6 +74,19 @@
         </div>   
     </div>
 </section>
+
+<div class="login-loading" id="login-loading">
+    <div class="login-loading__grid"></div>
+    <div class="login-loading__content">
+        <div class="ring"></div>
+        <div class="loader-text">
+            <span class="line line1">Yükleniyor...</span>
+            <span class="line line2">Admin paneline yönlendiriliyorsunuz</span>
+            <span class="line line3">Güvenli oturum başlatılıyor</span>
+        </div>
+        <div class="progress-bar"><span></span></div>
+    </div>
+</div>
 
 <!-- PRE LOADER -->
 <div class="loader-mask">
@@ -87,5 +101,40 @@
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/aos.js"></script>
 <script src="assets/js/preloader.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('login-form');
+    const loader = document.getElementById('login-loading');
+
+    // create particles
+    if (loader) {
+        for (let i = 0; i < 40; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.setProperty('--r', Math.random());
+            p.style.setProperty('--r2', Math.random());
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            loader.appendChild(p);
+        }
+    }
+
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('exampleInputEmail1')?.value.trim();
+            const pass = document.getElementById('exampleInputPassword1')?.value.trim();
+            if (email === 'admin@admin.com' && pass === 'admin') {
+                if (loader) loader.classList.add('show');
+                setTimeout(() => {
+                    window.location.href = 'admin/index.html';
+                }, 2200);
+            } else {
+                alert('Kullanıcı adı veya şifre hatalı. Demo giriş: admin@admin.com / admin');
+            }
+        });
+    }
+});
+</script>
 </body>
 </html>

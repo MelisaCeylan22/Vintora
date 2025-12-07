@@ -1074,7 +1074,7 @@ html{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(../images/offer-backgroundimage.jpg);
+    background-image: url(../images/offer-background.jpg);
 }
 .offer-con .offer_content {
     padding: 135px 0;
@@ -3188,7 +3188,7 @@ html{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(../images/space-backgroundimage.jpg);
+    background-image: url(../images/space-background.jpg);
 }
 .space-con .space_content h6 {
     margin-bottom: 16px;

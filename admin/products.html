@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+    <title>Ürünler | Vintora Admin</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div id="preloader"><div class="spinner"></div></div>
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo"><a href="index.html"><img src="../assets/images/logo.png" alt="logo" /></a></div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html" class="active">
+              <span class="icon"><i class="lni lni-dashboard"></i></span>
+              <span class="text">Panel</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_products" aria-controls="menu_products" aria-expanded="false">
+              <span class="icon"><i class="lni lni-archive"></i></span>
+              <span class="text">Ürünler</span>
+            </a>
+            <ul id="menu_products" class="collapse dropdown-nav">
+              <li><a href="products.html">Ürün Listesi</a></li>
+              <li><a href="products.html#new">Yeni Ürün Ekle</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="announcements.html">
+              <span class="icon"><i class="lni lni-bullhorn"></i></span>
+              <span class="text">Duyurular</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="orders.html">
+              <span class="icon"><i class="lni lni-cart-full"></i></span>
+              <span class="text">Siparişler</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="messages.html">
+              <span class="icon"><i class="lni lni-envelope"></i></span>
+              <span class="text">İletişim Kutusu</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="subscribers.html">
+              <span class="icon"><i class="lni lni-users"></i></span>
+              <span class="text">Haber Aboneleri</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_analytics" aria-controls="menu_analytics" aria-expanded="false">
+              <span class="icon"><i class="lni lni-bar-chart"></i></span>
+              <span class="text">Analizler</span>
+            </a>
+            <ul id="menu_analytics" class="collapse dropdown-nav">
+              <li><a href="analytics.html">Genel Analiz</a></li>
+              <li><a href="analytics.html#traffic">Trafik</a></li>
+              <li><a href="analytics.html#sales">Satış</a></li>
+            </ul>
+          </li>
+          <span class="divider"><hr /></span>
+
+        </ul>
+      </nav>
+    </aside>
+    <div class="overlay"></div>
+    <main class="main-wrapper">
+      <section class="section">
+        <div class="container-fluid">
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-12"><h2>Ürünler</h2></div>
+            </div>
+          </div>
+          <div class="card-style mb-30">
+            <div class="title mb-3 d-flex align-items-center justify-content-between flex-wrap">
+              <h6 class="text-medium mb-0">Ürün Listesi</h6>
+              <button type="button" class="main-btn primary-btn btn-sm" data-bs-toggle="modal" data-bs-target="#modalNewProduct">Yeni Ürün Ekle</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table top-selling-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Ürün</th>
+                    <th>Kategori</th>
+                    <th>Fiyat</th>
+                    <th>İşlem</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-product-list"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Yeni Ürün Modal -->
+    <div class="modal fade" id="modalNewProduct" tabindex="-1" aria-labelledby="modalNewProductLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalNewProductLabel">Yeni Ürün Ekle (Demo)</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="new-product-form" class="row g-3">
+              <div class="col-md-6">
+                <label class="text-sm text-muted">Ürün Adı</label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="col-md-3">
+                <label class="text-sm text-muted">Fiyat</label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="col-md-3">
+                <label class="text-sm text-muted">Kategori/Tip</label>
+                <select class="form-select" required>
+                  <option value="" selected disabled>Seçiniz</option>
+                  <option>Oturma Odası</option>
+                  <option>Koltuk Takımı</option>
+                  <option>Berjer</option>
+                  <option>Köşe Takımı</option>
+                  <option>Yatak Odası</option>
+                  <option>Yatak</option>
+                  <option>Baza</option>
+                  <option>Salon</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="text-sm text-muted">Görsel URL</label>
+                <input type="text" class="form-control" placeholder="https://...">
+              </div>
+              <div class="col-md-6">
+                <label class="text-sm text-muted">Resim Ekle (dosya)</label>
+                <input type="file" class="form-control" accept="image/*">
+              </div>
+              <div class="col-12">
+                <label class="text-sm text-muted">Kısa Açıklama</label>
+                <textarea class="form-control" rows="2"></textarea>
+              </div>
+              <div class="col-12">
+                <label class="text-sm text-muted">Uzun Açıklama</label>
+                <textarea class="form-control" rows="4"></textarea>
+              </div>
+              <div class="col-md-6">
+                <label class="text-sm text-muted">Özellikler</label>
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+              <div class="col-md-6">
+                <label class="text-sm text-muted">Materyaller</label>
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+              <p class="text-muted text-sm mb-0">Not: Bu form demo amaçlıdır, gerçek veri kaydı yapılmaz.</p>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="main-btn secondary-btn btn-sm" data-bs-dismiss="modal">Kapat</button>
+            <button type="button" class="main-btn primary-btn btn-sm" id="new-product-submit">Kaydet (Demo)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/products-data.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const tbody = document.getElementById('admin-product-list');
+        if (!tbody || typeof PRODUCTS === 'undefined') return;
+        const rows = Object.entries(PRODUCTS).map(([code, p]) => `
+          <tr>
+            <td><img src="${p.image.replace('../','../')}" alt="${p.title}" style="width:42px;height:42px;object-fit:cover;border-radius:8px;"></td>
+            <td>${p.title || code}</td>
+            <td>${p.types || '-'}</td>
+            <td>${p.price || '-'}</td>
+            <td><a class="main-btn primary-btn btn-sm" href="product-detail.html?code=${encodeURIComponent(code)}">Detay</a></td>
+          </tr>
+        `).join('');
+        tbody.innerHTML = rows;
+
+        const newSubmit = document.getElementById('new-product-submit');
+        if (newSubmit) {
+          newSubmit.addEventListener('click', () => {
+            alert('Demo: Ürün eklendi gibi gösterildi. Gerçek kayıt yapılmadı.');
+            const modalEl = document.getElementById('modalNewProduct');
+            const modal = bootstrap.Modal.getInstance(modalEl);
+            modal?.hide();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

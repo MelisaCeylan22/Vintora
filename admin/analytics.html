@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+    <title>Analizler | Vintora Admin</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div id="preloader"><div class="spinner"></div></div>
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo"><a href="index.html"><img src="../assets/images/logo.png" alt="logo" /></a></div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html" class="active">
+              <span class="icon"><i class="lni lni-dashboard"></i></span>
+              <span class="text">Panel</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_products" aria-controls="menu_products" aria-expanded="false">
+              <span class="icon"><i class="lni lni-archive"></i></span>
+              <span class="text">Ürünler</span>
+            </a>
+            <ul id="menu_products" class="collapse dropdown-nav">
+              <li><a href="products.html">Ürün Listesi</a></li>
+              <li><a href="products.html#new">Yeni Ürün Ekle</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="announcements.html">
+              <span class="icon"><i class="lni lni-bullhorn"></i></span>
+              <span class="text">Duyurular</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="orders.html">
+              <span class="icon"><i class="lni lni-cart-full"></i></span>
+              <span class="text">Siparişler</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="messages.html">
+              <span class="icon"><i class="lni lni-envelope"></i></span>
+              <span class="text">İletişim Kutusu</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="subscribers.html">
+              <span class="icon"><i class="lni lni-users"></i></span>
+              <span class="text">Haber Aboneleri</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_analytics" aria-controls="menu_analytics" aria-expanded="false">
+              <span class="icon"><i class="lni lni-bar-chart"></i></span>
+              <span class="text">Analizler</span>
+            </a>
+            <ul id="menu_analytics" class="collapse dropdown-nav">
+              <li><a href="analytics.html">Genel Analiz</a></li>
+              <li><a href="analytics.html#traffic">Trafik</a></li>
+              <li><a href="analytics.html#sales">Satış</a></li>
+            </ul>
+          </li>
+          <span class="divider"><hr /></span>
+
+        </ul>
+      </nav>
+    </aside>
+    <div class="overlay"></div>
+    <main class="main-wrapper">
+      <section class="section">
+        <div class="container-fluid">
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-12"><h2>Analizler</h2></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+              <div class="card-style mb-30 text-center">
+                <p class="text-medium text-gray">Toplam Satış (Aylık)</p>
+                <h2 class="text-bold" id="an-total-sales">₺0</h2>
+                <span class="badge bg-success">+12% MoM</span>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+              <div class="card-style mb-30 text-center">
+                <p class="text-medium text-gray">Sipariş Adedi</p>
+                <h2 class="text-bold" id="an-orders">0</h2>
+                <span class="badge bg-primary">Bu Ay</span>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+              <div class="card-style mb-30 text-center">
+                <p class="text-medium text-gray">Dönüşüm Oranı</p>
+                <h2 class="text-bold" id="an-conversion">0%</h2>
+                <span class="badge bg-warning">Funnel</span>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+              <div class="card-style mb-30 text-center">
+                <p class="text-medium text-gray">Abone Sayısı</p>
+                <h2 class="text-bold" id="an-subs">0</h2>
+                <span class="badge bg-secondary">Bülten</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card-style mb-30">
+                <div class="title d-flex flex-wrap justify-content-between align-items-center">
+                  <h6 class="text-medium mb-0">Aylık Satış & Sipariş</h6>
+                </div>
+                <div class="chart">
+                  <canvas id="salesChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card-style mb-30">
+                <div class="title d-flex flex-wrap justify-content-between align-items-center">
+                  <h6 class="text-medium mb-0">Trafik Kaynakları</h6>
+                </div>
+                <div class="chart">
+                  <canvas id="trafficChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card-style mb-30">
+                <div class="title d-flex flex-wrap justify-content-between align-items-center">
+                  <h6 class="text-medium mb-0">Cihaz Dağılımı</h6>
+                </div>
+                <div class="chart">
+                  <canvas id="deviceChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card-style mb-30">
+                <div class="title d-flex flex-wrap justify-content-between align-items-center">
+                  <h6 class="text-medium mb-0">Şehir Bazlı Satış</h6>
+                </div>
+                <div class="chart">
+                  <canvas id="cityChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card-style mb-30">
+                <div class="title d-flex flex-wrap justify-content-between align-items-center">
+                  <h6 class="text-medium mb-0">Haftalık Sipariş Adedi</h6>
+                </div>
+                <div class="chart">
+                  <canvas id="weeklyChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card-style mb-30">
+                <div class="title d-flex flex-wrap justify-content-between align-items-center">
+                  <h6 class="text-medium mb-0">Kanal Bazlı Dönüşüm</h6>
+                </div>
+                <div class="chart">
+                  <canvas id="funnelChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="card-style mb-30">
+                <div class="title d-flex flex-wrap justify-content-between align-items-center">
+                  <h6 class="text-medium mb-0">En Çok Satan Ürünler</h6>
+                </div>
+                <div class="table-responsive">
+                  <table class="table top-selling-table">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Ürün</th>
+                        <th>Kategori</th>
+                        <th>Fiyat</th>
+                        <th>Satış Adedi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="an-top-products"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const orders = (() => {
+          try {
+            const saved = JSON.parse(localStorage.getItem('vintora_orders') || '[]');
+            return Array.isArray(saved) ? saved : [];
+          } catch (e) { return []; }
+        })();
+        const subscribers = (() => {
+          try { const s = JSON.parse(localStorage.getItem('vintora_newsletter_emails') || '[]'); return Array.isArray(s) ? s : []; } catch(e){ return []; }
+        })();
+
+        const monthly = new Array(12).fill(0);
+        orders.forEach(o => {
+          if (o.createdAt) {
+            const m = new Date(o.createdAt).getMonth();
+            monthly[m] += parseFloat((o.total || '0').replace(/[^0-9.,]/g,'').replace('.','').replace(',','.')) || 0;
+          }
+        });
+        const totalSales = monthly.reduce((a,b)=>a+b,0);
+        const orderCount = orders.length;
+        const conversion = orderCount ? (orderCount / Math.max(subscribers.length, 10) * 100).toFixed(1) : 0;
+
+        const setText = (id,val) => { const el=document.getElementById(id); if(el) el.textContent=val; };
+        setText('an-total-sales', '₺' + totalSales.toLocaleString('tr-TR'));
+        setText('an-orders', orderCount);
+        setText('an-conversion', conversion + '%');
+        setText('an-subs', subscribers.length);
+
+        const ctxSales = document.getElementById('salesChart')?.getContext('2d');
+        if (ctxSales) {
+          new Chart(ctxSales, {
+            type:'line',
+            data:{ labels:['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'],
+              datasets:[{ label:'Satış (₺)', data: monthly, borderColor:'#365CF5', backgroundColor:'rgba(54,92,245,0.1)', tension:0.35, fill:true } ]},
+            options:{ plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}} }
+          });
+        }
+        const ctxTraffic = document.getElementById('trafficChart')?.getContext('2d');
+        if (ctxTraffic) {
+          new Chart(ctxTraffic, {
+            type:'doughnut',
+            data:{ labels:['Organik','Google Ads','Sosyal','E-posta'], datasets:[{ data:[45,25,20,10], backgroundColor:['#365CF5','#FCB153','#3CA7F4','#6DD3A9']}]},
+            options:{ plugins:{legend:{position:'bottom'}} }
+          });
+        }
+        const ctxDevice = document.getElementById('deviceChart')?.getContext('2d');
+        if (ctxDevice) {
+          new Chart(ctxDevice, {
+            type:'doughnut',
+            data:{ labels:['Mobil','Desktop','Tablet'], datasets:[{ data:[68,26,6], backgroundColor:['#365CF5','#6DD3A9','#FCB153']}]},
+            options:{ plugins:{legend:{position:'bottom'}} }
+          });
+        }
+        const ctxCity = document.getElementById('cityChart')?.getContext('2d');
+        if (ctxCity) {
+          new Chart(ctxCity, {
+            type:'bar',
+            data:{ labels:['İstanbul','Ankara','İzmir','Bursa','Antalya'], datasets:[{ data:[320,180,150,120,90], backgroundColor:'#365CF5' }]},
+            options:{ plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}} }
+          });
+        }
+
+        const ctxWeekly = document.getElementById('weeklyChart')?.getContext('2d');
+        if (ctxWeekly) {
+          new Chart(ctxWeekly, {
+            type:'bar',
+            data:{ labels:['Pzt','Sal','Çar','Per','Cum','Cmt','Paz'],
+              datasets:[{ label:'Sipariş', data:[22,18,25,20,34,40,28], backgroundColor:'#FCB153' }]},
+            options:{ plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}} }
+          });
+        }
+
+        const ctxFunnel = document.getElementById('funnelChart')?.getContext('2d');
+        if (ctxFunnel) {
+          new Chart(ctxFunnel, {
+            type:'bar',
+            data:{ labels:['Ziyaret','Sepete Ekle','Ödeme','Tamamlanan'],
+              datasets:[
+                { label:'Google Ads', data:[1000,420,260,180], backgroundColor:'#365CF5'},
+                { label:'Organik', data:[1400,510,340,240], backgroundColor:'#6DD3A9'},
+                { label:'Sosyal', data:[800,300,180,120], backgroundColor:'#FCB153'}
+              ]},
+            options:{ plugins:{legend:{position:'bottom'}}, scales:{y:{beginAtZero:true}} }
+          });
+        }
+
+        const topProducts = document.getElementById('an-top-products');
+        if (topProducts) {
+          const mock = [
+            { name:'Nora Koltuk', cat:'Oturma Odası', price:'₺2.000', sold:120, img:'../assets/images/1koltak.jpg' },
+            { name:'Artemis Koltuk', cat:'Oturma Odası', price:'₺2.999', sold:95, img:'../assets/images/2koltak.png' },
+            { name:'Siena Köşe', cat:'Köşe Takımı', price:'₺4.999', sold:80, img:'../assets/images/1kostak.png' },
+            { name:'Luna Berjer', cat:'Berjer', price:'₺1.799', sold:75, img:'../assets/images/1ber.png' },
+          ];
+          topProducts.innerHTML = mock.map(p => `
+            <tr>
+              <td><img src="${p.img}" alt="${p.name}" style="width:42px;height:42px;object-fit:cover;border-radius:8px;"></td>
+              <td>${p.name}</td>
+              <td>${p.cat}</td>
+              <td>${p.price}</td>
+              <td>${p.sold}</td>
+            </tr>`).join('');
+        }
+      });
+    </script>
+  </body>
+</html>

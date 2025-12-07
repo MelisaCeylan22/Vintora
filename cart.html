@@ -19,7 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/images/favicon/manifest.json">
+    <script>if(location.protocol!=='file:'){document.write('<link rel="manifest" href="./assets/images/favicon/manifest.json">');}</script>
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -180,14 +180,7 @@
                 <div class="col-xl-6 col-lg-8 col-md-10 col-12 mx-auto">
                     <div class="sub_banner_content" data-aos="fade-up">
                         <h1>Sepetim</h1>
-                        <p class="text-size-18">Ouis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore aeu fugiat nulla pariatur.</p>
-                        <div class="box">
-                            <a href="index.html" class="text-decoration-none">
-                                <span class="mb-0">Home</span>
-                            </a>
-                            <span class="mb-0 slash">/</span>
-                            <span class="mb-0 box_span">Cart</span>
-                        </div>
+                        <p class="text-size-18">Sepetinize ürün ekleyerek alışverişinizi tamamlayabilirsiniz.</p>
                     </div>
                 </div>
             </div>
@@ -202,7 +195,7 @@
                 <div class="product-detail-box" data-aos="fade-up">
                     <div class="heading">
                         <span>Sepetinizdeki Ürünler</span>
-                        <span>(04 Items)</span>
+                        <span data-cart-count>(0 Ürün)</span>
                     </div>
                     <div class="shopping-cart">
                         <div class="column-labels">
@@ -212,107 +205,8 @@
                             <label class="product-line-price">Total</label>
                             <label class="product-removal"></label>
                         </div>
-                        <div class="shopping-cart-info">
-                            <div class="product d-sm-flex d-block align-items-center">
-                                <div class="product-details">
-                                    <div class="product-image box1">
-                                        <figure class="mb-0">
-                                            <img src="./assets/images/cart-image1.png" alt="image" class="img-fluid">
-                                        </figure>
-                                    </div>
-                                    <div class="product-content">
-                                        <span class="product-title">Dining Table</span>
-                                        <span class="product-color text">Color: <span>White</span></span>
-                                        <span class="product-size text mb-0">Size: <span>L</span></span>
-                                    </div>
-                                </div>
-                                <div class="product-price"><span>48.00$</span></div>
-                                <div class="product-quantity d-flex">
-                                    <div class="product-qty-details">
-                                        <button class="value-button decrease-button" onclick="decreaseValue(this)" title="">-</button>
-                                        <div class="number">3</div><button class="value-button increase-button" onclick="increaseValue(this)" title="">+</button>
-                                    </div>
-                                </div>
-                                <div class="product-line-price"><span>144.00</span></div>
-                                <div class="product-removal">
-                                    <button class="remove-product"><i class="fas fa-times"></i></button>
-                                </div>
-                            </div>
-                            <div class="product d-sm-flex d-block align-items-center">
-                                <div class="product-details">
-                                    <div class="product-image box2">
-                                        <figure class="mb-0">
-                                            <img src="./assets/images/cart-image2.png" alt="image" class="img-fluid">
-                                        </figure>
-                                    </div>
-                                    <div class="product-content">
-                                        <span class="product-title">Modern Sofa</span>
-                                        <span class="product-color text">Color: <span>Brown</span></span>
-                                        <span class="product-size text mb-0">Size: <span>S</span></span>
-                                    </div>
-                                </div>
-                                <div class="product-price"><span>67.00$</span></div>
-                                <div class="product-quantity d-flex">
-                                    <div class="product-qty-details">
-                                        <button class="value-button decrease-button" onclick="decreaseValue(this)" title="">-</button>
-                                        <div class="number">6</div><button class="value-button increase-button" onclick="increaseValue(this)" title="">+</button>
-                                    </div>
-                                </div>
-                                <div class="product-line-price"><span>402.00</span></div>
-                                <div class="product-removal">
-                                    <button class="remove-product"><i class="fas fa-times"></i></button>
-                                </div>
-                            </div>
-                            <div class="product d-sm-flex d-block align-items-center">
-                                <div class="product-details">
-                                    <div class="product-image box3">
-                                        <figure class="mb-0">
-                                            <img src="./assets/images/cart-image3.png" alt="image" class="img-fluid">
-                                        </figure>
-                                    </div>
-                                    <div class="product-content">
-                                        <span class="product-title">Versatile Storage</span>
-                                        <span class="product-color text">Color: <span>Red</span></span>
-                                        <span class="product-size text mb-0">Size: <span>M</span></span>
-                                    </div>
-                                </div>
-                                <div class="product-price"><span>42.00$</span></div>
-                                <div class="product-quantity d-flex">
-                                    <div class="product-qty-details">
-                                        <button class="value-button decrease-button" onclick="decreaseValue(this)" title="">-</button>
-                                        <div class="number">4</div><button class="value-button increase-button" onclick="increaseValue(this)" title="">+</button>
-                                    </div>
-                                </div>
-                                <div class="product-line-price"><span>168.00</span></div>
-                                <div class="product-removal">
-                                    <button class="remove-product"><i class="fas fa-times"></i></button>
-                                </div>
-                            </div>
-                            <div class="product d-sm-flex d-block align-items-center">
-                                <div class="product-details">
-                                    <div class="product-image box4">
-                                        <figure class="mb-0">
-                                            <img src="./assets/images/cart-image4.png" alt="image" class="img-fluid">
-                                        </figure>
-                                    </div>
-                                    <div class="product-content">
-                                        <span class="product-title">Floor Lamp</span>
-                                        <span class="product-color text">Color: <span>Green</span></span>
-                                        <span class="product-size text mb-0">Size: <span>L</span></span>
-                                    </div>
-                                </div>
-                                <div class="product-price"><span>39.00$</span></div>
-                                <div class="product-quantity d-flex">
-                                    <div class="product-qty-details">
-                                        <button class="value-button decrease-button" onclick="decreaseValue(this)" title="">-</button>
-                                        <div class="number">2</div><button class="value-button increase-button" onclick="increaseValue(this)" title="">+</button>
-                                    </div>
-                                </div>
-                                <div class="product-line-price"><span>78.00</span></div>
-                                <div class="product-removal">
-                                    <button class="remove-product"><i class="fas fa-times"></i></button>
-                                </div>
-                            </div>
+                        <div class="shopping-cart-info" data-cart-list>
+                            <!-- JS ile doldurulacak -->
                         </div>
                     </div>
                     <div class="buttun-shopping">
@@ -333,12 +227,12 @@
                     <div class="detail">
                         <span class="heading">Ürün Detayları:</span>
                         <ul class="list-unstyled mb-0">
-                            <li><span>Ara Toplam</span><span class="dollar">$792.99</span></li>
-                            <li><span>Kargo</span><span class="dollar">$08.00</span></li>
+                            <li><span>Ara Toplam</span><span class="dollar" data-cart-subtotal>₺0</span></li>
+                            <li><span>Kargo</span><span class="dollar" data-cart-shipping>₺0</span></li>
                         </ul>
                         <div class="all-total">
                             <div class="total">
-                                <span class="text">Genel Toplam</span><span class="dollar">$800.99</span>
+                                <span class="text">Genel Toplam</span><span class="dollar" data-cart-total>₺0</span>
                             </div>
                             <a href="./checkout.html" class="text-decoration-none primary_btn">Ödemeye Geç</a>
                         </div>
@@ -436,6 +330,8 @@
 <script src="assets/js/preloader.js"></script>
 <script src="assets/js/search.js"></script>
 <script src="assets/js/country_dropdown.js"></script>
+<script src="assets/js/products-data.js"></script>
+<script src="assets/js/cart.js"></script>
 <script src="assets/js/remove-product.js"></script>
 <script src="assets/js/quantity.js"></script>
 </body>

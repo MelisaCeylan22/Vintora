@@ -19,7 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/images/favicon/manifest.json">
+    <script>if(location.protocol!=='file:'){document.write('<link rel="manifest" href="./assets/images/favicon/manifest.json">');}</script>
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -41,15 +41,6 @@
 <!-- Back to top button -->
 <a id="button"></a>
 <div class="sub_banner position-relative">
-    <div class="top-bar-con">
-        <div class="container">
-            <div class="top-bar-box">
-                <div class="top-bar-info">
-                    <p class="text mb-0">Tüm siparişlerinizde <span>%60'a</span> varan kış indirimi!</p>
-                </div>
-            </div>
-        </div>
-    </div>
 <header class="header">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light p-0">
@@ -177,20 +168,21 @@
         </figure>
         <div class="container">
             <div class="row">
-                <div class="col-xl-6 col-lg-8 col-md-10 col-12 mx-auto">
+                <div class="col-xl-7 col-lg-9 col-md-11 col-12 mx-auto">
                     <div class="sub_banner_content" data-aos="fade-up">
-                        <h1>Ödeme Sayfası</h1>
-                        <p class="text-size-18">Ouis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore aeu fugiat nulla pariatur.</p>
-                        <div class="box">
-                            <a href="index.html" class="text-decoration-none">
-                                <span class="mb-0">Home</span>
-                            </a>
-                            <span class="mb-0 slash">/</span>
-                            <a href="cart.html" class="cart text-decoration-none">
-                                <span class="mb-0">Cart</span>
-                            </a>
-                            <span class="mb-0 slash">/</span>
-                            <span class="mb-0 box_span">Checkout</span>
+                        <h1>Güvenli Ödeme</h1>
+                        <p class="text-size-18">Kart bilgileriniz bankanızın 3D Secure katmanıyla korunur. KVKK uyumlu altyapı ve 7/24 destekle alışverişinizi güvenle tamamlayın.</p>
+                            <div class="badges d-flex justify-content-center align-items-center mt-3 flex-wrap">
+                                <span class="badge-item mr-2 mb-2"><i class="fa-solid fa-shield-halved"></i> 256-bit SSL</span>
+                                <span class="badge-item mr-2 mb-2"><i class="fa-solid fa-shield"></i> KVKK uyumlu</span>
+                                <span class="badge-item mr-2 mb-2"><i class="fa-solid fa-rotate-left"></i> 14 gün iade</span>
+                                <span class="badge-item mr-2 mb-2"><i class="fa-solid fa-headset"></i> 7/24 destek</span>
+                                <span class="badge-item mr-2 mb-2"><i class="fa-solid fa-lock"></i> 3D Secure</span>
+                                <span class="badge-item mr-2 mb-2"><i class="fa-solid fa-check-circle"></i> Güvenli Ödeme</span>
+                                <span class="badge-item mr-2 mb-2"><i class="fa-solid fa-credit-card"></i> Tüm Kartlar</span>
+                                <span class="badge-item mr-2 mb-2"><i class="fa-solid fa-truck"></i> Hızlı Kargo</span>
+                                <span class="badge-item mr-2 mb-2"><i class="fa-solid fa-thumbs-up"></i> Güvenilir Satıcı</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -204,98 +196,69 @@
         <div class="row">
             <div class="col-lg-8 col-12">
                 <div class="product-detail-box">
-                    <form id="contactpage" method="post" class="position-relative">
+                    <form id="checkout-form" method="post" class="position-relative">
                         <div class="upper-form" data-aos="fade-up">
                             <span class="address">Fatura Adresi:</span>
                             <div class="form-group input1 float-left">
                                 <label for="fname">Ad</label>
-                                <input type="text" class="form_style" name="fname" id="fname">
+                                <input type="text" class="form_style" name="fname" id="fname" required>
                             </div>
                             <div class="form-group float-left">
                                 <label for="lname">Soyad</label>
-                                <input type="text" class="form_style" name="lname" id="lname">
+                                <input type="text" class="form_style" name="lname" id="lname" required>
                             </div>
                             <div class="form-group input1 float-left">
                                 <label for="email">Email</label>
-                                <input type="email" class="form_style" name="email" id="email">
+                                <input type="email" class="form_style" name="email" id="email" required>
                             </div>
                             <div class="form-group float-left">
                                 <label>Şehir</label>
-                                <select class="form-control" required="">
-                                    <option value="" disabled="" selected="" hidden="">Şehir Seç</option>
-                                    <option value="California">California</option>
-                                    <option value="Texas">Texas</option>
-                                    <option value="Florida">Florida</option>
+                                <select class="form-control" id="city" required>
+                                    <option value="" disabled selected hidden>Şehir Seç</option>
                                 </select>
                             </div>
                             <div class="form-group input1 float-left">
                                 <label>Mahalle</label>
-                                <select class="form-control" required="">
-                                    <option value="" disabled="" selected="" hidden="">Mahalle Seç</option>
-                                    <option value="Los Angeles">Los Angeles</option>
-                                    <option value="San Francisco">San Francisco</option>
-                                    <option value="San Diego">San Diego</option>
+                                <select class="form-control" id="district" required>
+                                    <option value="" disabled selected hidden>Mahalle Seç</option>
                                 </select>
                             </div>
                             <div class="form-group float-left">
                                 <label for="code">Posta Kodu</label>
-                                <input type="text" class="form_style" name="code" id="code">
+                                <input type="text" class="form_style" name="code" id="code" maxlength="5" required>
                             </div>
                         </div>
                         <div class="lower-form" data-aos="fade-up">
                             <span class="address">Ödeme Yöntemi:</span>
                             <div class="form-group float-left checkbox">
-                                <input type="checkbox" id="card">
-                                <label for="card">Kredi Kartı</label>
+                                <input type="checkbox" id="card" checked>
+                                <label for="card">Kredi Kartı (3D Secure)</label>
                                 <img src="./assets/images/checkout-cardimage.png" alt="image" class="img-fluid card">
                             </div>
                             <div class="form-group input2">
                                 <label for="cnumber">Kart Numarası</label>
-                                <input type="number" class="form_style" name="cnumber" id="cnumber">
+                                <input type="text" class="form_style" name="cnumber" id="cnumber" inputmode="numeric" autocomplete="cc-number" placeholder="4546 7112 3456 7894" required>
+                                <small class="card-hint">Örnek: 4546 7112 3456 7894</small>
                             </div>
                             <div class="form-group dates input1 float-left">
                                 <label>Son Kullanma Tarihi</label>
-                                <select class="form-control input3 float-left" required="">
-                                    <option value="" disabled="" selected="" hidden="">Ay</option>
-                                    <option value="January">Ocak</option>
-                                    <option value="February">Şubat</option>
-                                    <option value="March">Mart</option>
-                                    <option value="April">Nisan</option>
-                                    <option value="May">Mayıs</option>
-                                    <option value="June">Haziran</option>
-                                    <option value="July">Temmuz</option>
-                                    <option value="August">Ağustos</option>
-                                    <option value="September">Eylül</option>
-                                    <option value="October">Ekim</option>
-                                    <option value="November">Kasım</option>
-                                    <option value="December">Aralık</option>
+                                <select class="form-control input3 float-left" id="exp-month" required>
+                                    <option value="" disabled selected hidden>Ay</option>
                                 </select>
-                                <select class="form-control input4 float-left" required="">
-                                    <option value="" disabled="" selected="" hidden="">Yıl</option>
-                                    <option value="2026">2026</option>
-                                    <option value="2027">2027</option>
-                                    <option value="2028">2028</option>
-                                    <option value="2029">2029</option>
-                                    <option value="2030">2030</option>
-                                    <option value="2031">2031</option>
-                                    <option value="2032">2032</option>
-                                    <option value="2033">2033</option>
-                                    <option value="2034">2034</option>
-                                    <option value="2035">2035</option>
-                                    <option value="2036">2036</option>
-                                    <option value="2037">2037</option>
+                                <select class="form-control input4 float-left" id="exp-year" required>
+                                    <option value="" disabled selected hidden>Yıl</option>
                                 </select>
                             </div>
                             <div class="form-group float-left">
                                 <label for="scord">Güvenlik Kodu</label>
-                                <input type="text" class="form_style" name="scord" id="scord">
+                                <input type="text" class="form_style" name="scord" id="scord" maxlength="4" inputmode="numeric" autocomplete="cc-csc" placeholder="CVV" required>
                             </div>
                             <div class="form-group float-left dates checkbox">
                                 <input type="checkbox" id="cash">
                                 <label for="cash">Kapıda Ödeme</label>
                                 <i class="fa-solid fa-money-bill-wave"></i>
                             </div>
-                            <p class="text-center text-size-14">Ödeme yaparak bla blaaa blaa <a href="./term-of-use.html" class="text-decoration-none terms-btn">Terms and Conditions</a></p>
+                            <p class="text-center text-size-14">Ödemeler bankanızın 3D Secure katmanıyla korunur. <a href="./term-of-use.html" class="text-decoration-none terms-btn">Koşullar</a></p>
                         </div>
                         <button data-aos="fade-up" type="submit" id="submit" class="submit_now text-decoration-none">Ödeme Yap</button>
                     </form>
@@ -307,49 +270,15 @@
                         <span class="product-items">Ürünler</span>
                         <span class="product-prices">Fiyat</span>
                     </div>
-                    <div class="list-items">
-                        <div class="each-item">
-                            <div class="product-items">
-                                <span class="heading">3 x Dining Table</span>
-                                <p class="text-size-14 mb-0">Duis aute irure dolor in rea velit esse cillum.</p>
-                            </div>
-                            <div class="product-prices">
-                                <span class="dollar">$144.00</span>
-                            </div>
-                        </div>
-                        <div class="each-item">
-                            <div class="product-items">
-                                <span class="heading">6 x Modern Sofa</span>
-                                <p class="text-size-14 mb-0">Guis aute irure dolor in rea velit esse cillum.</p>
-                            </div>
-                            <div class="product-prices">
-                                <span class="dollar">$402.00</span>
-                            </div>
-                        </div>
-                        <div class="each-item">
-                            <div class="product-items">
-                                <span class="heading">4 x Versatile Storage</span>
-                                <p class="text-size-14 mb-0">Nuis aute irure dolor in rea velit esse cillum.</p>
-                            </div>
-                            <div class="product-prices">
-                                <span class="dollar">$168.00</span>
-                            </div>
-                        </div>
-                        <div class="each-item">
-                            <div class="product-items">
-                                <span class="heading">2 x Floor Lamp</span>
-                                <p class="text-size-14 mb-0">Euis aute irure dolor in rea velit esse cillum.</p>
-                            </div>
-                            <div class="product-prices">
-                                <span class="dollar">$78.00</span>
-                            </div>
-                        </div>
+                    <div class="list-items" data-checkout-list>
+                        <!-- JS ile doldurulacak -->
+                    </div>
                         <div class="each-item">
                             <div class="product-items">
                                 <span class="heading">Genel Toplam</span>
                             </div>
                             <div class="product-prices">
-                                <span class="dollar total-price">$800.99</span>
+                                <span class="dollar total-price" data-checkout-total>₺0</span>
                             </div>
                         </div>
                     </div>
@@ -442,6 +371,10 @@
 <script src="assets/js/preloader.js"></script>
 <script src="assets/js/search.js"></script>
 <script src="assets/js/country_dropdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="assets/js/products-data.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/checkout.js"></script>
 <script src="assets/js/remove-product.js"></script>
 <script src="assets/js/quantity.js"></script>
 </body>

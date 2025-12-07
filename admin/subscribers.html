@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+    <title>Haber Aboneleri | Vintora Admin</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div id="preloader"><div class="spinner"></div></div>
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo"><a href="index.html"><img src="../assets/images/logo.png" alt="logo" /></a></div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html">
+              <span class="icon"><i class="lni lni-dashboard"></i></span>
+              <span class="text">Panel</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_products" aria-controls="menu_products" aria-expanded="false">
+              <span class="icon"><i class="lni lni-archive"></i></span>
+              <span class="text">Ürünler</span>
+            </a>
+            <ul id="menu_products" class="collapse dropdown-nav">
+              <li><a href="products.html">Ürün Listesi</a></li>
+              <li><a href="products.html#new">Yeni Ürün Ekle</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="announcements.html">
+              <span class="icon"><i class="lni lni-bullhorn"></i></span>
+              <span class="text">Duyurular</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="orders.html">
+              <span class="icon"><i class="lni lni-cart-full"></i></span>
+              <span class="text">Siparişler</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="messages.html">
+              <span class="icon"><i class="lni lni-envelope"></i></span>
+              <span class="text">İletişim Kutusu</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="subscribers.html" class="active">
+              <span class="icon"><i class="lni lni-users"></i></span>
+              <span class="text">Haber Aboneleri</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_analytics" aria-controls="menu_analytics" aria-expanded="false">
+              <span class="icon"><i class="lni lni-bar-chart"></i></span>
+              <span class="text">Analizler</span>
+            </a>
+            <ul id="menu_analytics" class="collapse dropdown-nav">
+              <li><a href="analytics.html">Genel Analiz</a></li>
+              <li><a href="analytics.html#traffic">Trafik</a></li>
+              <li><a href="analytics.html#sales">Satış</a></li>
+            </ul>
+          </li>
+          <span class="divider"><hr /></span>
+
+        </ul>
+      </nav>
+    </aside>
+    <div class="overlay"></div>
+    <main class="main-wrapper">
+      <section class="section">
+        <div class="container-fluid">
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-12"><h2>Haber Aboneleri</h2></div>
+            </div>
+          </div>
+          <div class="row g-3 mb-30">
+            <div class="col-xl-3 col-md-6">
+              <div class="card-style h-100 text-center">
+                <p class="text-medium text-gray mb-1">Toplam Abone</p>
+                <h2 class="text-bold" id="sub-total">0</h2>
+                <span class="badge bg-primary">Bülten</span>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card-style h-100 text-center">
+                <p class="text-medium text-gray mb-1">Bugün Eklenen</p>
+                <h2 class="text-bold" id="sub-today">0</h2>
+                <span class="badge bg-success">Son 24 saat</span>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card-style h-100 text-center">
+                <p class="text-medium text-gray mb-1">En Son Abone</p>
+                <h5 class="text-bold text-truncate mb-1" id="sub-last">-</h5>
+                <span class="badge bg-warning">Zaman</span>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card-style h-100 text-center">
+                <p class="text-medium text-gray mb-1">Seçili Kişi</p>
+                <h2 class="text-bold" id="sub-selected">0</h2>
+                <span class="badge bg-info">Hedef</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="card-style mb-30">
+                <div class="title d-flex flex-wrap align-items-center justify-content-between gap-2">
+                  <h6 class="text-medium mb-0">Abone Listesi</h6>
+                  <div class="input-style-1 mb-0" style="min-width:240px;">
+                    <input type="text" id="sub-search" placeholder="E-posta veya etiket ara" />
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table top-selling-table align-middle">
+                    <thead>
+                      <tr>
+                        <th style="width:40px;">
+                          <div class="check-input-primary">
+                            <input class="form-check-input" type="checkbox" id="select-all" />
+                          </div>
+                        </th>
+                        <th><h6 class="text-sm text-medium mb-0">E-posta</h6></th>
+                        <th class="min-width"><h6 class="text-sm text-medium mb-0">Etiket</h6></th>
+                        <th class="min-width"><h6 class="text-sm text-medium mb-0">Kaynak</h6></th>
+                        <th class="min-width"><h6 class="text-sm text-medium mb-0">Tarih</h6></th>
+                        <th class="min-width text-end"><h6 class="text-sm text-medium mb-0">İşlem</h6></th>
+                      </tr>
+                    </thead>
+                    <tbody id="subscribers-body">
+                      <tr><td colspan="6" class="text-center text-gray">Veri yükleniyor...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="card-style mb-30">
+                <div class="title mb-3">
+                  <h6 class="text-medium mb-1">Hızlı Mesaj Gönder</h6>
+                  <p class="text-sm text-gray mb-0">Seçili abonelere veya tüm listeye kampanya / duyuru ilet.</p>
+                </div>
+                <div class="input-style-1">
+                  <label>Konu</label>
+                  <input type="text" id="msg-subject" placeholder="Örn: Yeni sezon indirimleri" />
+                </div>
+                <div class="input-style-1">
+                  <label>Mesaj</label>
+                  <textarea id="msg-body" rows="4" placeholder="Duyuru metniniz..."></textarea>
+                </div>
+                <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+                  <button id="btn-send-selected" class="main-btn primary-btn btn-hover">Seçililere Gönder</button>
+                  <button id="btn-send-all" class="main-btn secondary-btn btn-hover">Tüm Listeye Gönder</button>
+                </div>
+                <div class="input-style-1">
+                  <label>Yeni Abone Ekle</label>
+                  <div class="d-flex gap-2 flex-wrap">
+                    <input type="email" id="new-email" placeholder="ornek@mail.com" class="flex-grow-1" />
+                    <button id="btn-add-email" class="main-btn info-btn btn-hover">Ekle</button>
+                  </div>
+                </div>
+                <div id="sub-toast" class="admin-toast" role="status" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      (() => {
+        const STORAGE_KEY = "vintora_newsletter_emails";
+        const tbody = document.getElementById("subscribers-body");
+        const search = document.getElementById("sub-search");
+        const selectAll = document.getElementById("select-all");
+        const toastEl = document.getElementById("sub-toast");
+        const subjectEl = document.getElementById("msg-subject");
+        const bodyEl = document.getElementById("msg-body");
+        const addEmailEl = document.getElementById("new-email");
+
+        let subscribers = [];
+        let filtered = [];
+        let selected = new Set();
+
+        const fallback = [
+          { email: "deneme@vintora.com", tag: "Genel", source: "Web bülten", date: new Date().toISOString() },
+          { email: "kampanya@ornek.com", tag: "Kampanya", source: "Pop-up", date: new Date(Date.now() - 86400000).toISOString() },
+          { email: "musteri@domain.com", tag: "VIP", source: "Mağaza", date: new Date(Date.now() - 3 * 86400000).toISOString() },
+        ];
+
+        const showToast = (msg, type = "success") => {
+          toastEl.textContent = msg;
+          toastEl.classList.remove("show", "error");
+          if (type === "error") toastEl.classList.add("error");
+          requestAnimationFrame(() => {
+            toastEl.classList.add("show");
+            setTimeout(() => toastEl.classList.remove("show"), 2600);
+          });
+        };
+
+        const loadSubscribers = () => {
+          try {
+            const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+            const arr = Array.isArray(raw) ? raw : [];
+            if (!arr.length) return fallback;
+            return arr.map((email) => ({
+              email,
+              tag: "Genel",
+              source: "Web bülten",
+              date: new Date().toISOString(),
+            }));
+          } catch (e) {
+            return fallback;
+          }
+        };
+
+        const saveSubscribers = (list) => {
+          const emails = list.map((item) => item.email.toLowerCase());
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(emails));
+        };
+
+        const formatDate = (val) => {
+          const d = new Date(val);
+          if (Number.isNaN(d)) return "-";
+          return d.toLocaleString("tr-TR", { dateStyle: "medium", timeStyle: "short" });
+        };
+
+        const renderStats = (list) => {
+          const now = new Date();
+          const total = document.getElementById("sub-total");
+          const today = document.getElementById("sub-today");
+          const last = document.getElementById("sub-last");
+          const selectedEl = document.getElementById("sub-selected");
+          total.textContent = list.length;
+          today.textContent = list.filter((s) => now - new Date(s.date) <= 24 * 60 * 60 * 1000).length;
+          const newest = list.slice().sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+          last.textContent = newest ? formatDate(newest.date) : "-";
+          selectedEl.textContent = selected.size;
+        };
+
+        const renderTable = (list) => {
+          if (!tbody) return;
+          if (!list.length) {
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center text-gray">Abone bulunamadı.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = list
+            .map(
+              (s, idx) => `
+            <tr>
+              <td>
+                <div class="check-input-primary">
+                  <input class="form-check-input sub-check" type="checkbox" data-email="${s.email}" ${selected.has(s.email) ? "checked" : ""} />
+                </div>
+              </td>
+              <td><p class="text-sm mb-0">${s.email}</p></td>
+              <td><span class="status-btn ${s.tag === "VIP" ? "success-btn" : "primary-btn"}">${s.tag}</span></td>
+              <td><p class="text-sm mb-0">${s.source}</p></td>
+              <td><p class="text-sm mb-0">${formatDate(s.date)}</p></td>
+              <td class="text-end">
+                <button class="more-btn ml-10 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="lni lni-more-alt"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li class="dropdown-item"><a href="#0" class="text-gray sub-remove" data-email="${s.email}">Sil</a></li>
+                </ul>
+              </td>
+            </tr>`
+            )
+            .join("");
+          document.querySelectorAll(".sub-check").forEach((el) => {
+            el.addEventListener("change", (e) => {
+              const email = e.target.getAttribute("data-email");
+              if (e.target.checked) selected.add(email);
+              else selected.delete(email);
+              renderStats(filtered);
+            });
+          });
+          document.querySelectorAll(".sub-remove").forEach((el) => {
+            el.addEventListener("click", (e) => {
+              e.preventDefault();
+              const email = el.getAttribute("data-email");
+              subscribers = subscribers.filter((s) => s.email !== email);
+              filtered = filtered.filter((s) => s.email !== email);
+              selected.delete(email);
+              saveSubscribers(subscribers);
+              renderStats(filtered);
+              renderTable(filtered);
+              showToast("Abone silindi.");
+            });
+          });
+        };
+
+        const filterList = (query) => {
+          const q = (query || "").toLowerCase();
+          filtered = subscribers.filter((s) =>
+            [s.email, s.tag, s.source].some((f) => (f || "").toLowerCase().includes(q))
+          );
+          renderTable(filtered);
+          renderStats(filtered);
+        };
+
+        // init
+        subscribers = loadSubscribers();
+        filtered = [...subscribers];
+        renderTable(filtered);
+        renderStats(filtered);
+
+        search?.addEventListener("input", (e) => filterList(e.target.value));
+
+        selectAll?.addEventListener("change", (e) => {
+          if (e.target.checked) filtered.forEach((s) => selected.add(s.email));
+          else selected.clear();
+          renderTable(filtered);
+          renderStats(filtered);
+        });
+
+        document.getElementById("btn-add-email")?.addEventListener("click", () => {
+          const email = (addEmailEl.value || "").trim().toLowerCase();
+          const valid = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
+          if (!valid) {
+            showToast("Geçerli bir e-posta girin.", "error");
+            return;
+          }
+          if (subscribers.some((s) => s.email === email)) {
+            showToast("Bu e-posta zaten listede.", "error");
+            return;
+          }
+          const entry = { email, tag: "Manuel", source: "Admin panel", date: new Date().toISOString() };
+          subscribers.unshift(entry);
+          filtered.unshift(entry);
+          saveSubscribers(subscribers);
+          addEmailEl.value = "";
+          renderTable(filtered);
+          renderStats(filtered);
+          showToast("Yeni abone eklendi.");
+        });
+
+        const handleSend = (scope) => {
+          const subject = (subjectEl.value || "").trim();
+          const body = (bodyEl.value || "").trim();
+          const targetList = scope === "all" ? filtered : subscribers.filter((s) => selected.has(s.email));
+          if (!targetList.length) {
+            showToast("Gönderilecek abone seçiniz veya filtreleyiniz.", "error");
+            return;
+          }
+          if (!subject || !body) {
+            showToast("Konu ve mesaj alanı boş olamaz.", "error");
+            return;
+          }
+          showToast(`${targetList.length} aboneye gönderim hazırlandı.`);
+        };
+
+        document.getElementById("btn-send-selected")?.addEventListener("click", () => handleSend("selected"));
+        document.getElementById("btn-send-all")?.addEventListener("click", () => handleSend("all"));
+      })();
+    </script>
+    <style>
+      .admin-toast {
+        position: fixed;
+        right: 18px;
+        bottom: 22px;
+        min-width: 240px;
+        max-width: 320px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: #fff;
+        border-left: 4px solid #4a6cf7;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity .25s ease, transform .25s ease;
+        z-index: 9999;
+        font-weight: 600;
+        color: #1f2937;
+      }
+      .admin-toast.error { border-left-color: #ef4444; color: #b91c1c; }
+      .admin-toast.show { opacity: 1; transform: translateY(0); }
+    </style>
+  </body>
+</html>

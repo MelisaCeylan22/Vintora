@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+    <title>Duyurular | Vintora Admin</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div id="preloader"><div class="spinner"></div></div>
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo"><a href="index.html"><img src="../assets/images/logo.png" alt="logo" /></a></div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html" class="active">
+              <span class="icon"><i class="lni lni-dashboard"></i></span>
+              <span class="text">Panel</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_products" aria-controls="menu_products" aria-expanded="false">
+              <span class="icon"><i class="lni lni-archive"></i></span>
+              <span class="text">Ürünler</span>
+            </a>
+            <ul id="menu_products" class="collapse dropdown-nav">
+              <li><a href="products.html">Ürün Listesi</a></li>
+              <li><a href="products.html#new">Yeni Ürün Ekle</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="announcements.html">
+              <span class="icon"><i class="lni lni-bullhorn"></i></span>
+              <span class="text">Duyurular</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="orders.html">
+              <span class="icon"><i class="lni lni-cart-full"></i></span>
+              <span class="text">Siparişler</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="messages.html">
+              <span class="icon"><i class="lni lni-envelope"></i></span>
+              <span class="text">İletişim Kutusu</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="subscribers.html">
+              <span class="icon"><i class="lni lni-users"></i></span>
+              <span class="text">Haber Aboneleri</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_analytics" aria-controls="menu_analytics" aria-expanded="false">
+              <span class="icon"><i class="lni lni-bar-chart"></i></span>
+              <span class="text">Analizler</span>
+            </a>
+            <ul id="menu_analytics" class="collapse dropdown-nav">
+              <li><a href="analytics.html">Genel Analiz</a></li>
+              <li><a href="analytics.html#traffic">Trafik</a></li>
+              <li><a href="analytics.html#sales">Satış</a></li>
+            </ul>
+          </li>
+          <span class="divider"><hr /></span>
+
+        </ul>
+      </nav>
+    </aside>
+    <div class="overlay"></div>
+    <main class="main-wrapper">
+      <section class="section">
+        <div class="container-fluid">
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-12"><h2>Duyurular</h2></div>
+            </div>
+          </div>
+          <div class="card-style mb-30">
+            <div class="title mb-3 d-flex align-items-center justify-content-between flex-wrap">
+              <h6 class="text-medium mb-0">Duyuru Listesi</h6>
+              <button type="button" class="main-btn primary-btn btn-sm" data-bs-toggle="modal" data-bs-target="#modalNewAnnouncement">Yeni Duyuru Ekle</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table top-selling-table">
+                <thead>
+                  <tr>
+                    <th>Başlık</th>
+                    <th>Tarih</th>
+                    <th>Durum</th>
+                    <th>Dosya</th>
+                    <th>İşlem</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-announcement-list"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Yeni Duyuru Modal -->
+    <div class="modal fade" id="modalNewAnnouncement" tabindex="-1" aria-labelledby="modalNewAnnouncementLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalNewAnnouncementLabel">Yeni Duyuru Ekle (Demo)</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="new-announcement-form" class="row g-3">
+              <div class="col-md-8">
+                <label class="text-sm text-muted">Başlık</label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="col-md-4">
+                <label class="text-sm text-muted">Durum</label>
+                <select class="form-select" required>
+                  <option value="" selected disabled>Seçiniz</option>
+                  <option>Yayında</option>
+                  <option>Taslak</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="text-sm text-muted">Yayın Tarihi</label>
+                <input type="date" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="text-sm text-muted">Dosya (PDF/Word/Resim)</label>
+                <input type="file" class="form-control" accept=\".pdf,.doc,.docx,.png,.jpg,.jpeg\">
+              </div>
+              <div class="col-12">
+                <label class="text-sm text-muted">İçerik</label>
+                <textarea class="form-control" rows="4" required></textarea>
+              </div>
+              <p class="text-muted text-sm mb-0">Not: Bu form demo amaçlıdır, gerçek veri kaydı yapılmaz.</p>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="main-btn secondary-btn btn-sm" data-bs-dismiss="modal">Kapat</button>
+            <button type="button" class="main-btn primary-btn btn-sm" id="new-announcement-submit">Kaydet (Demo)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const mockAnnouncements = [
+          { title: 'Yeni Koleksiyon Lansmanı', date: '2024-09-05', status: 'Yayında', file: 'brochure.pdf' },
+          { title: 'Eylül Kampanyası', date: '2024-09-02', status: 'Taslak', file: 'kampanya.docx' },
+          { title: 'Mağaza Açılışı - İzmit', date: '2024-08-28', status: 'Yayında', file: 'acilis.jpg' },
+        ];
+        const tbody = document.getElementById('admin-announcement-list');
+        if (tbody) {
+          tbody.innerHTML = mockAnnouncements.map((a, idx) => `
+            <tr>
+              <td>${a.title}</td>
+              <td>${a.date}</td>
+              <td><span class="badge ${a.status === 'Yayında' ? 'bg-success' : 'bg-secondary'}">${a.status}</span></td>
+              <td>${a.file}</td>
+              <td class="d-flex gap-2">
+                <button class="main-btn warning-btn btn-sm" data-action="toggle" data-id="${idx}">${a.status === 'Yayında' ? 'Yayından Kaldır' : 'Yayınla'}</button>
+                <button class="main-btn secondary-btn btn-sm" data-action="detail" data-id="${idx}">Detay</button>
+              </td>
+            </tr>
+          `).join('');
+          tbody.addEventListener('click', (e) => {
+            const btn = e.target.closest('button[data-action]');
+            if (!btn) return;
+            const id = btn.getAttribute('data-id');
+            const item = mockAnnouncements[id];
+            if (!item) return;
+            if (btn.dataset.action === 'toggle') {
+              alert(`Demo: \"${item.title}\" ${item.status === 'Yayında' ? 'yayından kaldırıldı' : 'yayına alındı'} gibi gösterildi.`);
+            }
+            if (btn.dataset.action === 'detail') {
+              alert(`Duyuru Detayı (demo):\\nBaşlık: ${item.title}\\nTarih: ${item.date}\\nDurum: ${item.status}\\nDosya: ${item.file}`);
+            }
+          });
+        }
+        const submitBtn = document.getElementById('new-announcement-submit');
+        if (submitBtn) {
+          submitBtn.addEventListener('click', () => {
+            alert('Demo: Duyuru eklendi gibi gösterildi. Gerçek kayıt yapılmadı.');
+            const modalEl = document.getElementById('modalNewAnnouncement');
+            const modal = bootstrap.Modal.getInstance(modalEl);
+            modal?.hide();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

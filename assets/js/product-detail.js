@@ -17,18 +17,32 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log('[PD] PRODUCTS keys =', Object.keys(PRODUCTS));
 
   
-  let data = PRODUCTS[raw];
+  let matchedKey = null;
+  let data = null;
+
+  const tryAssign = (key) => {
+    if (!key) return false;
+    const found = PRODUCTS[key];
+    if (found) {
+      matchedKey = key;
+      data = found;
+      return true;
+    }
+    return false;
+  };
+
+  tryAssign(raw);
   
-  if (!data) data = PRODUCTS[toKey(raw)];
+  if (!data) tryAssign(toKey(raw));
   
   if (!data) {
     const mapBySlug = {};
     Object.keys(PRODUCTS).forEach(k => { mapBySlug[toSlug(k)] = k; });
-    const hit = mapBySlug[toSlug(raw)];
-    if (hit) data = PRODUCTS[hit];
+    const hitKey = mapBySlug[toSlug(raw)];
+    if (hitKey) tryAssign(hitKey);
   }
 
-  console.log('[PD] matched data =', data ? data.title : null);
+  console.log('[PD] matched data =', data ? data.title : null, 'key=', matchedKey);
   if (!data) return;
 
   
@@ -59,6 +73,11 @@ document.addEventListener('DOMContentLoaded', function () {
       ['Özellikler',  data.features  || '-'],
     ];
     infoTbody.innerHTML = rows.map(([k,v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('');
+  }
+
+  const addBtn = document.querySelector('.add-to-cart');
+  if (addBtn && matchedKey) {
+    addBtn.dataset.productId = matchedKey;
   }
 
   document.title = `${data.title} | Vintora`;

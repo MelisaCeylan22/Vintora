@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+    <title>Ürün Detayı | Vintora Admin</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div id="preloader"><div class="spinner"></div></div>
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo"><a href="index.html"><img src="../assets/images/logo.png" alt="logo" /></a></div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item"><a href="index.html"><span class="icon"><i class="lni lni-dashboard"></i></span><span class="text">Panel</span></a></li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_products" aria-controls="menu_products" aria-expanded="true"><span class="icon"><i class="lni lni-archive"></i></span><span class="text">Ürünler</span></a>
+            <ul id="menu_products" class="collapse show dropdown-nav">
+              <li><a href="products.html">Ürün Listesi</a></li>
+              <li><a href="products.html#new">Yeni Ürün Ekle</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="announcements.html"><span class="icon"><i class="lni lni-bullhorn"></i></span><span class="text">Duyurular</span></a></li>
+          <li class="nav-item"><a href="orders.html"><span class="icon"><i class="lni lni-cart-full"></i></span><span class="text">Siparişler</span></a></li>
+          <li class="nav-item"><a href="messages.html"><span class="icon"><i class="lni lni-envelope"></i></span><span class="text">İletişim Kutusu</span></a></li>
+          <li class="nav-item"><a href="subscribers.html"><span class="icon"><i class="lni lni-users"></i></span><span class="text">Haber Aboneleri</span></a></li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_analytics" aria-controls="menu_analytics" aria-expanded="false"><span class="icon"><i class="lni lni-bar-chart"></i></span><span class="text">Analizler</span></a>
+            <ul id="menu_analytics" class="collapse dropdown-nav">
+              <li><a href="analytics.html">Genel Analiz</a></li>
+              <li><a href="analytics.html#traffic">Trafik</a></li>
+              <li><a href="analytics.html#sales">Satış</a></li>
+            </ul>
+          </li>
+          <span class="divider"><hr /></span>
+          <li class="nav-item"><a href="settings.html"><span class="icon"><i class="lni lni-cog"></i></span><span class="text">Ayarlar</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="overlay"></div>
+    <main class="main-wrapper">
+      <section class="section">
+        <div class="container-fluid">
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center"><div class="col-md-12"><h2>Ürün Detayı</h2></div></div>
+          </div>
+          <form class="card-style mb-30" id="product-edit-form">
+            <div class="row" id="product-detail">
+              <div class="col-md-4 mb-3">
+                <img id="pd-image" src="" alt="Ürün görseli" class="img-fluid rounded mb-2" />
+                <div class="mb-2">
+                  <label class="text-sm text-muted d-block">Görsel URL</label>
+                  <input type="text" class="form-control" id="pd-image-url" placeholder="https://...">
+                </div>
+                <div>
+                  <label class="text-sm text-muted d-block">Resim Ekle (dosya)</label>
+                  <input type="file" class="form-control" id="pd-image-file" accept="image/*">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="text-sm text-muted">Ürün Adı</label>
+                    <input type="text" class="form-control" id="pd-title" required>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="text-sm text-muted">Fiyat</label>
+                    <input type="text" class="form-control" id="pd-price" required>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="text-sm text-muted">Kategori/Tip</label>
+                    <select class="form-select" id="pd-types">
+                      <option value="">Seçiniz</option>
+                      <option>Oturma Odası</option>
+                      <option>Koltuk Takımı</option>
+                      <option>Berjer</option>
+                      <option>Köşe Takımı</option>
+                      <option>Yatak Odası</option>
+                      <option>Yatak</option>
+                      <option>Baza</option>
+                      <option>Salon</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="text-sm text-muted">Kısa Açıklama</label>
+                    <textarea class="form-control" id="pd-short" rows="2"></textarea>
+                  </div>
+                  <div class="col-12">
+                    <label class="text-sm text-muted">Uzun Açıklama</label>
+                    <textarea class="form-control" id="pd-long" rows="4"></textarea>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="text-sm text-muted">Özellikler</label>
+                    <textarea class="form-control" id="pd-features" rows="3"></textarea>
+                  </div>
+                    <div class="col-md-6">
+                    <label class="text-sm text-muted">Materyaller</label>
+                    <textarea class="form-control" id="pd-materials" rows="3"></textarea>
+                  </div>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                  <button type="submit" class="main-btn primary-btn btn-sm">Değişiklikleri Kaydet (Demo)</button>
+                  <a href="products.html" class="main-btn secondary-btn btn-sm">Listeye Dön</a>
+                </div>
+                <p class="text-muted mt-2 mb-0 text-sm">Not: Bu demo kaydı sadece önizlemedir, gerçek veritabanı yazma yapılmaz.</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/products-data.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(location.search);
+        const code = params.get('code');
+        if (!code || typeof PRODUCTS === 'undefined') return;
+        const data = PRODUCTS[code];
+        if (!data) return;
+        const img = document.getElementById('pd-image');
+        const urlInput = document.getElementById('pd-image-url');
+        const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
+        img.src = data.image.replace('../','../');
+        img.alt = data.title || code;
+        urlInput.value = data.image || '';
+        setVal('pd-title', data.title || code);
+        setVal('pd-price', data.price || '');
+        setVal('pd-types', data.types || '');
+        setVal('pd-short', data.shortDesc || '');
+        setVal('pd-long', data.longDesc || '');
+        setVal('pd-features', data.features || '');
+        setVal('pd-materials', data.materials || '');
+        document.title = (data.title || 'Ürün') + ' | Vintora Admin';
+
+        urlInput.addEventListener('input', () => {
+          if (urlInput.value) img.src = urlInput.value;
+        });
+        document.getElementById('pd-image-file').addEventListener('change', (e) => {
+          const file = e.target.files?.[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = (ev) => { img.src = ev.target.result; };
+          reader.readAsDataURL(file);
+        });
+
+        document.getElementById('product-edit-form').addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert('Demo: Değişiklikler kaydedildi gibi gösterildi, gerçek kayıt yapılmadı.');
+          window.location.href = 'products.html';
+        });
+      });
+    </script>
+  </body>
+</html>

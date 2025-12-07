@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+    <title>İletişim Kutusu | Vintora Admin</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div id="preloader"><div class="spinner"></div></div>
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo"><a href="index.html"><img src="../assets/images/logo.png" alt="logo" /></a></div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html" class="active">
+              <span class="icon"><i class="lni lni-dashboard"></i></span>
+              <span class="text">Panel</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_products" aria-controls="menu_products" aria-expanded="false">
+              <span class="icon"><i class="lni lni-archive"></i></span>
+              <span class="text">Ürünler</span>
+            </a>
+            <ul id="menu_products" class="collapse dropdown-nav">
+              <li><a href="products.html">Ürün Listesi</a></li>
+              <li><a href="products.html#new">Yeni Ürün Ekle</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="announcements.html">
+              <span class="icon"><i class="lni lni-bullhorn"></i></span>
+              <span class="text">Duyurular</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="orders.html">
+              <span class="icon"><i class="lni lni-cart-full"></i></span>
+              <span class="text">Siparişler</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="messages.html" class="active">
+              <span class="icon"><i class="lni lni-envelope"></i></span>
+              <span class="text">İletişim Kutusu</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="subscribers.html">
+              <span class="icon"><i class="lni lni-users"></i></span>
+              <span class="text">Haber Aboneleri</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_analytics" aria-controls="menu_analytics" aria-expanded="false">
+              <span class="icon"><i class="lni lni-bar-chart"></i></span>
+              <span class="text">Analizler</span>
+            </a>
+            <ul id="menu_analytics" class="collapse dropdown-nav">
+              <li><a href="analytics.html">Genel Analiz</a></li>
+              <li><a href="analytics.html#traffic">Trafik</a></li>
+              <li><a href="analytics.html#sales">Satış</a></li>
+            </ul>
+          </li>
+          <span class="divider"><hr /></span>
+
+        </ul>
+      </nav>
+    </aside>
+    <div class="overlay"></div>
+    <main class="main-wrapper">
+      <section class="section">
+        <div class="container-fluid">
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-12"><h2>İletişim Kutusu</h2></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="card-style mb-20 text-center">
+                <p class="text-medium text-gray mb-2">Toplam Mesaj</p>
+                <h2 class="text-bold" id="msg-total">0</h2>
+                <span class="badge bg-primary">İletişim</span>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="card-style mb-20 text-center">
+                <p class="text-medium text-gray mb-2">Bugün Gelen</p>
+                <h2 class="text-bold" id="msg-today">0</h2>
+                <span class="badge bg-success">Son 24 saat</span>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+              <div class="card-style mb-20 text-center">
+                <p class="text-medium text-gray mb-2">Son Mesaj</p>
+                <h2 class="text-bold text-truncate" id="msg-last">-</h2>
+                <span class="badge bg-warning">En yeni</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-style mb-30">
+            <div class="title mb-3 d-flex flex-wrap align-items-center justify-content-between gap-2">
+              <h6 class="text-medium mb-0">İletişim Formu Mesajları</h6>
+              <div class="input-style-1 mb-0" style="min-width:220px;">
+                <input type="text" id="msg-search" placeholder="Ad, e-posta veya mesaj ara" />
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table top-selling-table">
+                <thead>
+                  <tr>
+                    <th><h6 class="text-sm text-medium">İsim</h6></th>
+                    <th class="min-width"><h6 class="text-sm text-medium">E-posta</h6></th>
+                    <th class="min-width"><h6 class="text-sm text-medium">Telefon</h6></th>
+                    <th class="min-width"><h6 class="text-sm text-medium">Mesaj</h6></th>
+                    <th class="min-width"><h6 class="text-sm text-medium">Tarih</h6></th>
+                  </tr>
+                </thead>
+                <tbody id="messages-body">
+                  <tr><td colspan="5" class="text-center text-gray">Veri yükleniyor...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      (function () {
+        const STORAGE_KEY = "vintoraContactMessages";
+        const tbody = document.getElementById("messages-body");
+        const search = document.getElementById("msg-search");
+
+        const readMessages = () => {
+          try {
+            const stored = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            if (stored.length) return stored;
+          } catch (e) {}
+          return [
+            { ad: "Örnek Kayıt", email: "demo@vintora.com", telefon: "0532 000 00 00", mesaj: "Merhaba, koleksiyon hakkında bilgi alabilir miyim?", tarih: new Date().toISOString() },
+          ];
+        };
+
+        const formatDate = (value) => {
+          const d = new Date(value);
+          if (Number.isNaN(d.getTime())) return "-";
+          return d.toLocaleString("tr-TR", { dateStyle: "medium", timeStyle: "short" });
+        };
+
+        const renderStats = (list) => {
+          const totalEl = document.getElementById("msg-total");
+          const todayEl = document.getElementById("msg-today");
+          const lastEl = document.getElementById("msg-last");
+          const now = new Date();
+          const todayCount = list.filter((m) => {
+            const d = new Date(m.tarih);
+            return now - d <= 24 * 60 * 60 * 1000;
+          }).length;
+          const last = list.slice().sort((a, b) => new Date(b.tarih) - new Date(a.tarih))[0];
+          totalEl.textContent = list.length;
+          todayEl.textContent = todayCount;
+          lastEl.textContent = last ? formatDate(last.tarih) : "-";
+        };
+
+        const renderTable = (list) => {
+          if (!tbody) return;
+          if (!list.length) {
+            tbody.innerHTML = '<tr><td colspan="5" class="text-center text-gray">Kayıt bulunamadı.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = list
+            .map(
+              (m) => `
+            <tr>
+              <td><p class="text-sm mb-0">${m.ad || "-"}</p></td>
+              <td><p class="text-sm mb-0">${m.email || "-"}</p></td>
+              <td><p class="text-sm mb-0">${m.telefon || "-"}</p></td>
+              <td><p class="text-sm mb-0 text-truncate" style="max-width:260px;" title="${m.mesaj || ""}">${m.mesaj || "-"}</p></td>
+              <td><p class="text-sm mb-0">${formatDate(m.tarih)}</p></td>
+            </tr>`
+            )
+            .join("");
+        };
+
+        const messages = readMessages();
+        renderStats(messages);
+        renderTable(messages);
+
+        search?.addEventListener("input", (e) => {
+          const q = e.target.value.toLowerCase();
+          const filtered = messages.filter((m) =>
+            [m.ad, m.email, m.telefon, m.mesaj].some((f) => (f || "").toLowerCase().includes(q))
+          );
+          renderTable(filtered);
+        });
+      })();
+    </script>
+  </body>
+</html>

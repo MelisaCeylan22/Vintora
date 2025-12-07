@@ -19,7 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/images/favicon/manifest.json">
+    <script>if(location.protocol!=='file:'){document.write('<link rel="manifest" href="./assets/images/favicon/manifest.json">');}</script>
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -647,65 +647,6 @@
                         <a href="urun/shop.html" class="text-decoration-none primary_btn">Şİmdİ Alın</a>
                     </div>
                 </div>
-                <div class="col-xl-7 col-lg-6 col-12">
-                    <div class="offer_wrapper position-relative">
-                        <div class="box box1">
-                            <img src="./assets/images/offer-dot.png" alt="image" class="dot img-fluid">
-                            <div class="popup-box">
-                                <h4>Modern Sofa</h4>
-                                <p class="text-size-14">Dolorem ipsum nuia amieisci velit ruia velit...</p>
-                                <div class="price">
-                                    <span class="price1">$42.00</span>
-                                    <span class="price2">$89.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box box2">
-                            <img src="./assets/images/offer-dot.png" alt="image" class="dot img-fluid">
-                            <div class="popup-box">
-                                <h4>Modern Lamp</h4>
-                                <p class="text-size-14">Dolorem ipsum nuia amieisci velit ruia velit...</p>
-                                <div class="price">
-                                    <span class="price1">$22.00</span>
-                                    <span class="price2">$39.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box box3">
-                            <img src="./assets/images/offer-dot.png" alt="image" class="dot img-fluid">
-                            <div class="popup-box">
-                                <h4>Modern Plant</h4>
-                                <p class="text-size-14">Dolorem ipsum nuia amieisci velit ruia velit...</p>
-                                <div class="price">
-                                    <span class="price1">$14.00</span>
-                                    <span class="price2">$10.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box box4">
-                            <img src="./assets/images/offer-dot.png" alt="image" class="dot img-fluid">
-                            <div class="popup-box">
-                                <h4>Modern Table</h4>
-                                <p class="text-size-14">Dolorem ipsum nuia amieisci velit ruia velit...</p>
-                                <div class="price">
-                                    <span class="price1">$24.00</span>
-                                    <span class="price2">$30.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box box5">
-                            <img src="./assets/images/offer-dot.png" alt="image" class="dot img-fluid">
-                            <div class="popup-box">
-                                <h4>Modern Plant</h4>
-                                <p class="text-size-14">Dolorem ipsum nuia amieisci velit ruia velit...</p>
-                                <div class="price">
-                                    <span class="price1">$22.00</span>
-                                    <span class="price2">$39.00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1059,11 +1000,11 @@
                     <div class="update_content" data-aos="fade-up">
                         <h6 class="text-white">Bültenİmİze Katılın</h6>
                         <h2 class="text-white">En Yeni Fırsatlar ve Haberler Size Gelsin!</h2>
-                        <form action="javascript:;">
+                        <form id="newsletter-form" action="javascript:;">
                             <div class="form-group position-relative mb-0">
-                                <input type="text" class="form_style mb-0" placeholder="E-posta Adresinizi Girin"
-                                    name="email">
-                                <button>Abone Olun</button>
+                                <input type="email" class="form_style mb-0" placeholder="E-posta Adresinizi Girin"
+                                    name="email" required>
+                                <button type="submit">Abone Olun</button>
                             </div>
                         </form>
                     </div>
@@ -1330,6 +1271,7 @@
     <script src="assets/js/video-popup.js"></script>
     <script src="assets/js/counter.js"></script>
     <script src="assets/js/popup-image.js"></script>
+    <script src="assets/js/news_email_data.js"></script>
 </body>
 
 </html>

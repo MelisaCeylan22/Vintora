@@ -19,7 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/images/favicon/manifest.json">
+    <script>if(location.protocol!=='file:'){document.write('<link rel="manifest" href="./assets/images/favicon/manifest.json">');}</script>
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -180,13 +180,6 @@
                     <div class="sub_banner_content" data-aos="fade-up">
                         <h1>İletişim</h1>
                         <p class="text-size-18">Sorularınızı yanıtlamak ve ihtiyaçlarınıza çözüm bulmak için hazırız.</p>
-                        <div class="box">
-                            <a href="index.html" class="text-decoration-none">
-                                <span class="mb-0">Home</span>
-                            </a>
-                            <span class="mb-0 slash">/</span>
-                            <span class="mb-0 box_span">Contact Us</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -255,32 +248,33 @@
         <div class="row">
             <div class="col-12">
                 <div class="contact_form" data-aos="fade-up">
-                    <form id="contactpage" method="post" class="position-relative=">
+                    <form id="contactpage" method="post" class="position-relative" novalidate>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                 <div class="form-group">
-                                    <input type="text" class="form_style" placeholder="Ad" name="fname" id="fname"> 
+                                    <input type="text" class="form_style" placeholder="Ad" name="fname" id="fname" required> 
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                 <div class="form-group">
-                                    <input type="tel" class="form_style" placeholder="Telefon" name="phone" id="phone">
+                                    <input type="tel" class="form_style" placeholder="Telefon" name="phone" id="phone" required>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                 <div class="form-group">
-                                    <input type="email" class="form_style" placeholder="Email" name="email" id="email">
+                                    <input type="email" class="form_style" placeholder="Email" name="email" id="email" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group message">
-                                    <textarea class="form_style" placeholder="Mesaj" rows="3" name="msg"></textarea>
+                                    <textarea class="form_style" placeholder="Mesaj" rows="3" name="msg" id="msg" required></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="text-center">
                             <button id="submit" type="submit" class="submit_now primary_btn">Gönder</button>
                         </div>
+                        <div id="form_result" class="contact-alert" role="status" aria-live="polite"></div>
                     </form>
                 </div>
             </div>
@@ -367,6 +361,27 @@
     <div class="loader">
         <div></div>
         <div></div>
+    </div>
+</div>
+<div id="contact-modal" class="contact-modal" aria-hidden="true" role="dialog" aria-labelledby="contact-modal-title">
+    <div class="contact-modal__box" role="document">
+        <div class="contact-modal__glow"></div>
+        <div class="contact-modal__icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <h3 id="contact-modal-title">Başarıyla iletildi</h3>
+        <p class="mb-0 contact-modal__lede">Mesajınızı aldık, ekibimiz en kısa sürede dönüş yapacak. Yoğun ilginize teşekkür ederiz.</p>
+        <div class="contact-modal__meta">
+            <div>
+                <span class="meta-label">Öncelik</span>
+                <span class="meta-value">48 saat içinde dönüş</span>
+            </div>
+            <div>
+                <span class="meta-label">Çalışma saatleri</span>
+                <span class="meta-value">Hafta içi 09.00 - 18.00</span>
+            </div>
+        </div>
+        <button type="button" class="primary_btn modal-close">Tamam</button>
     </div>
 </div>
 <!-- Latest compiled JavaScript -->

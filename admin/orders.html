@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+    <title>Siparişler | Vintora Admin</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div id="preloader"><div class="spinner"></div></div>
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo"><a href="index.html"><img src="../assets/images/logo.png" alt="logo" /></a></div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html" class="active">
+              <span class="icon"><i class="lni lni-dashboard"></i></span>
+              <span class="text">Panel</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_products" aria-controls="menu_products" aria-expanded="false">
+              <span class="icon"><i class="lni lni-archive"></i></span>
+              <span class="text">Ürünler</span>
+            </a>
+            <ul id="menu_products" class="collapse dropdown-nav">
+              <li><a href="products.html">Ürün Listesi</a></li>
+              <li><a href="products.html#new">Yeni Ürün Ekle</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="announcements.html">
+              <span class="icon"><i class="lni lni-bullhorn"></i></span>
+              <span class="text">Duyurular</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="orders.html">
+              <span class="icon"><i class="lni lni-cart-full"></i></span>
+              <span class="text">Siparişler</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="messages.html">
+              <span class="icon"><i class="lni lni-envelope"></i></span>
+              <span class="text">İletişim Kutusu</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="subscribers.html">
+              <span class="icon"><i class="lni lni-users"></i></span>
+              <span class="text">Haber Aboneleri</span>
+            </a>
+          </li>
+          <li class="nav-item nav-item-has-children">
+            <a href="#0" data-bs-toggle="collapse" data-bs-target="#menu_analytics" aria-controls="menu_analytics" aria-expanded="false">
+              <span class="icon"><i class="lni lni-bar-chart"></i></span>
+              <span class="text">Analizler</span>
+            </a>
+            <ul id="menu_analytics" class="collapse dropdown-nav">
+              <li><a href="analytics.html">Genel Analiz</a></li>
+              <li><a href="analytics.html#traffic">Trafik</a></li>
+              <li><a href="analytics.html#sales">Satış</a></li>
+            </ul>
+          </li>
+          <span class="divider"><hr /></span>
+
+        </ul>
+      </nav>
+    </aside>
+    <div class="overlay"></div>
+    <main class="main-wrapper">
+      <section class="section">
+        <div class="container-fluid">
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-12"><h2>Siparişler</h2></div>
+            </div>
+          </div>
+          <div class="card-style mb-30">
+            <div class="title mb-3 d-flex align-items-center justify-content-between flex-wrap">
+              <h6 class="text-medium mb-0">Sipariş Listesi</h6>
+              <div class="d-flex gap-2">
+                <select id="order-status-filter" class="form-select form-select-sm">
+                  <option value="">Tümü</option>
+                  <option value="Hazırlanıyor">Hazırlanıyor</option>
+                  <option value="Kargoda">Kargoda</option>
+                  <option value="Teslim Edildi">Teslim Edildi</option>
+                  <option value="İptal">İptal</option>
+                </select>
+                <input type="text" id="order-search" class="form-control form-control-sm" placeholder="Müşteri / No ara">
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table top-selling-table">
+                <thead>
+                  <tr>
+                    <th>Sipariş No</th>
+                    <th>Müşteri</th>
+                    <th>Tarih</th>
+                    <th>Tutar</th>
+                    <th>Durum</th>
+                    <th>İşlem</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-order-list"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Detay Modal -->
+    <div class="modal fade" id="orderDetailModal" tabindex="-1" aria-labelledby="orderDetailModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="orderDetailModalLabel">Sipariş Detayı</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="order-detail-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="main-btn secondary-btn btn-sm" data-bs-dismiss="modal">Kapat</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Durum Modal -->
+    <div class="modal fade" id="orderStatusModal" tabindex="-1" aria-labelledby="orderStatusModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="orderStatusModalLabel">Durum Değiştir</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <label class="text-sm text-muted mb-2 d-block">Yeni Durum</label>
+            <select id="order-status-select" class="form-select">
+              <option value="Hazırlanıyor">Hazırlanıyor</option>
+              <option value="Kargoda">Kargoda</option>
+              <option value="Teslim Edildi">Teslim Edildi</option>
+              <option value="İptal">İptal</option>
+            </select>
+            <p class="text-sm text-muted mt-3 mb-0">Not: Demo ortamı, gerçek kayıt yapılmaz.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="main-btn secondary-btn btn-sm" data-bs-dismiss="modal">Kapat</button>
+            <button type="button" class="main-btn primary-btn btn-sm" id="order-status-save">Kaydet (Demo)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const loadOrders = () => {
+          try {
+            const saved = JSON.parse(localStorage.getItem('vintora_orders') || '[]');
+            if (Array.isArray(saved) && saved.length) {
+              return saved.map(o => ({
+                no: o.id || 'VT-' + Math.random().toString(16).slice(2),
+                customer: o.customer || 'Müşteri',
+                date: o.createdAt ? o.createdAt.slice(0,10) : '',
+                total: o.total || '',
+                status: o.status || 'Hazırlanıyor',
+                email: o.email || '',
+                address: o.address || '',
+                items: o.items || ''
+              }));
+            }
+          } catch (e) {}
+          return [
+            { no: 'VT-202409-001', customer: 'Ezgi Kaya', date: '2024-09-12', total: '₺8.450', status: 'Hazırlanıyor', email:'ezgi@example.com', address:'Kadıköy/İstanbul', items:'Nora Koltuk x1' },
+            { no: 'VT-202409-002', customer: 'Ahmet Demir', date: '2024-09-11', total: '₺5.200', status: 'Kargoda', email:'ahmet@example.com', address:'Çankaya/Ankara', items:'Artemis Koltuk x1' },
+          ];
+        };
+        const orders = loadOrders();
+        const tbody = document.getElementById('admin-order-list');
+        const statusFilter = document.getElementById('order-status-filter');
+        const searchInput = document.getElementById('order-search');
+
+        const render = () => {
+          const q = (searchInput.value || '').toLowerCase();
+          const st = statusFilter.value;
+          const rows = orders
+            .filter(o => (!st || o.status === st) && (o.customer.toLowerCase().includes(q) || o.no.toLowerCase().includes(q)))
+            .map(o => `
+              <tr>
+                <td>${o.no}</td>
+                <td>${o.customer}</td>
+                <td>${o.date}</td>
+                <td>${o.total}</td>
+                <td><span class="badge ${badge(o.status)}">${o.status}</span></td>
+                <td class="d-flex gap-2">
+                  <button class="main-btn primary-btn btn-sm" data-action="detail" data-no="${o.no}">Detay</button>
+                  <button class="main-btn warning-btn btn-sm" data-action="update" data-no="${o.no}">Durum Değiştir</button>
+                </td>
+              </tr>
+            `).join('');
+          tbody.innerHTML = rows || '<tr><td colspan="6" class="text-center text-muted">Kayıt yok</td></tr>';
+        };
+
+        const badge = (status) => {
+          if (status === 'Teslim Edildi') return 'bg-success';
+          if (status === 'Kargoda') return 'bg-info';
+          if (status === 'Hazırlanıyor') return 'bg-warning';
+          return 'bg-secondary';
+        };
+
+        if (statusFilter) statusFilter.addEventListener('change', render);
+        if (searchInput) searchInput.addEventListener('input', render);
+
+        
+        const detailModalEl = document.getElementById('orderDetailModal');
+        const statusModalEl = document.getElementById('orderStatusModal');
+        const detailModal = detailModalEl ? new bootstrap.Modal(detailModalEl) : null;
+        const statusModal = statusModalEl ? new bootstrap.Modal(statusModalEl) : null;
+        const detailBody = document.getElementById('order-detail-body');
+        const statusSelect = document.getElementById('order-status-select');
+        const statusSave = document.getElementById('order-status-save');
+        let currentOrder = null;
+
+        if (tbody) tbody.addEventListener('click', (e) => {
+          const btn = e.target.closest('button[data-action]');
+          if (!btn) return;
+          const no = btn.getAttribute('data-no');
+          const order = orders.find(o => o.no === no);
+          if (!order) return;
+          currentOrder = order;
+          if (btn.dataset.action === 'detail') {
+            if (detailBody) {
+              detailBody.innerHTML = `
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted text-sm">Sipariş No</span><strong>${order.no}</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted text-sm">Müşteri</span><strong>${order.customer}</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted text-sm">Tarih</span><strong>${order.date}</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted text-sm">Tutar</span><strong>${order.total}</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted text-sm">Durum</span><span class="badge ${badge(order.status)}">${order.status}</span>
+                </div>
+                <div class="mb-2">
+                  <span class="text-muted text-sm d-block">E-posta</span><strong>${order.email || '-'}</strong>
+                </div>
+                <div class="mb-2">
+                  <span class="text-muted text-sm d-block">Adres</span><strong>${order.address || '-'}</strong>
+                </div>
+                <div class="mb-2">
+                  <span class="text-muted text-sm d-block">Ürünler</span><strong>${order.items || 'Belirtilmedi'}</strong>
+                </div>
+                <div class="mb-2">
+                  <span class="text-muted text-sm d-block">Not</span><strong>${order.note || '—'}</strong>
+                </div>
+                <div class="mb-2">
+                  <span class="text-muted text-sm d-block">Ödeme Yöntemi</span><strong>${order.payment || 'Kredi Kartı (varsayılan)'}</strong>
+                </div>
+                <hr>
+                <p class="text-sm text-muted mb-0">Demo detayı: satır, kargo ve ödeme bilgileri için gerçek entegrasyon gerektiğinde buraya eklenebilir.</p>
+              `;
+            }
+            detailModal?.show();
+          }
+          if (btn.dataset.action === 'update') {
+            if (statusSelect) statusSelect.value = order.status;
+            statusModal?.show();
+          }
+        });
+
+        if (statusSave) {
+          statusSave.addEventListener('click', () => {
+            const next = statusSelect?.value;
+            if (currentOrder && next) {
+              currentOrder.status = next;
+              render();
+              statusModal?.hide();
+              alert(`Demo: ${currentOrder.no} durumu "${next}" olarak güncellendi (gerçek kayıt yapılmadı).`);
+            }
+          });
+        }
+
+        render();
+      });
+    </script>
+  </body>
+</html>
